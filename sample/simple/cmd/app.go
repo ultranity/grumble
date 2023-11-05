@@ -33,8 +33,9 @@ import (
 )
 
 var App = grumble.New(&grumble.Config{
-	Name:        "foo",
-	Description: "An awesome foo bar",
+	Name:            "foo",
+	Description:     "An awesome foo bar",
+	IgnoreFlagError: true,
 	Flags: func(f *grumble.Flags) {
 		f.String("d", "directory", "DEFAULT", "set an alternative root directory path")
 		f.Bool("v", "verbose", false, "enable verbose mode")

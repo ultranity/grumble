@@ -117,9 +117,9 @@ func (f *Flags) match(flag, short, long string) bool {
 }
 
 func (f *Flags) parse(args []string, res FlagMap) ([]string, error) {
-	var err error
+var err error
 	var parsed bool
-
+	var not_parsed_args []string = make([]string, 0)
 	// Parse all leading flags.
 Loop:
 	for len(args) > 0 {
@@ -150,25 +150,26 @@ Loop:
 				continue Loop
 			}
 		}
-		return nil, fmt.Errorf("invalid flag: %s", a)
+		not_parsed_args = append(not_parsed_args, a)
+		continue Loop
 	}
 
 	// Finally set all the default values for not passed flags.
-	if f.defaults == nil {
-		return args, nil
-	}
-
-	for _, i := range f.list {
-		if _, ok := res[i.Long]; ok {
-			continue
+	if f.defaults != nil {
+		for _, i := range f.list {
+			if _, ok := res[i.Long]; ok {
+				continue
+			}
+			df, ok := f.defaults[i.Long]
+			if !ok {
+				return nil, fmt.Errorf("invalid flag: missing default function: %s", i.Long)
+			}
+			df(res)
 		}
-		df, ok := f.defaults[i.Long]
-		if !ok {
-			return nil, fmt.Errorf("invalid flag: missing default function: %s", i.Long)
-		}
-		df(res)
 	}
-
+	if len(not_parsed_args)!=0{
+		return args, fmt.Errorf("invalid flags: %v", not_parsed_args)
+	}
 	return args, nil
 }
 
