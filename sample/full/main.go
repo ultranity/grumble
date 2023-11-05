@@ -25,8 +25,8 @@
 package main
 
 import (
-	"github.com/desertbit/grumble"
-	"github.com/desertbit/grumble/sample/full/cmd"
+	"github.com/ultranity/grumble"
+	"github.com/ultranity/grumble/sample/full/cmd"
 )
 
 func main() {

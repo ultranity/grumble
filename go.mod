@@ -1,4 +1,4 @@
-module github.com/desertbit/grumble
+module github.com/ultranity/grumble
 
 go 1.12
 
@@ -12,9 +12,6 @@ require (
 )
 
 require (
-	github.com/Netflix/go-expect v0.0.0-20190729225929-0e00d9168667 // indirect
-	github.com/hinshun/vt10x v0.0.0-20180809195222-d55458df857c // indirect
-	github.com/kr/pty v1.1.8 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
 	golang.org/x/sys v0.14.0 // indirect

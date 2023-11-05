@@ -27,7 +27,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/desertbit/grumble"
+	"github.com/ultranity/grumble"
 	"gopkg.in/AlecAivazis/survey.v1"
 )
 

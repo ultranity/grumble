@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/desertbit/grumble"
-	"github.com/desertbit/readline"
 	"time"
+
+	"github.com/desertbit/readline"
+	"github.com/ultranity/grumble"
 )
 
 func main() {

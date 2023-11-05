@@ -25,8 +25,8 @@
 package cmd
 
 import (
-	"github.com/desertbit/grumble"
 	"github.com/fatih/color"
+	"github.com/ultranity/grumble"
 )
 
 var App = grumble.New(&grumble.Config{
