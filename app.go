@@ -308,7 +308,13 @@ func (a *App) RunWithReadline(rl *readline.Instance) (err error) {
 	// Parse the app command line flags.
 	args, err = a.flags.parse(args, a.flagMap)
 	if err != nil {
-		return err
+		if a.config.IgnoreFlagError {
+			if a.flagMap.Bool("verbose") {
+				a.PrintError(err)
+			}
+		} else {
+			return err
+		}
 	}
 
 	// Check if nocolor was set.

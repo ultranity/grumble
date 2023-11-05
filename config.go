@@ -45,6 +45,9 @@ type Config struct {
 	// Define all app command flags within this function.
 	Flags func(f *Flags)
 
+	// IgnoreFlagError defines if flag should be restrictly set
+	IgnoreFlagError bool
+
 	// Persist readline historys to file if specified.
 	HistoryFile string
 
